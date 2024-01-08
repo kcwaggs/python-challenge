@@ -16,11 +16,11 @@ with open(pybank_csv, 'r') as csv1:
 with open(pybank_csv, 'r') as csv2:       
    csvreader2 = csv.reader(csv2, delimiter=',')
    next(csv2, None)
-   t = sum(float(row[1]) for row in csvreader2)
+   t = sum(int(row[1]) for row in csvreader2)
 
 #print the results
 print(f"Total Months: {m}")
-print(f"Total: {t}")
-print(f"Average Change: {t}")
-print(f"Greatest Increase in Profits: {t}")
-print(f"Greatest Decrease in Profits: {t}")
+print(f"Total: ${t}")
+print(f"Average Change: ${t}")
+print(f"Greatest Increase in Profits: ${t}")
+print(f"Greatest Decrease in Profits: ${t}")

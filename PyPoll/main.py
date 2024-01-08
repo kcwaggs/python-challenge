@@ -1,6 +1,5 @@
 # import CSV 
 import os
-import csv
 
 # variables
 t = 0
@@ -13,8 +12,9 @@ candidate_3 = "Raymon Anthony Doane"
 candidate_3_counter = 0
 
 # pathing and read CSV file
-pypoll_csv = os.path.join('resources','election_data.csv')
+pypoll_csv = os.path.join('PyPoll','resources','election_data.csv')
 with open(pypoll_csv) as csvfile:
+    import csv
     csvreader = csv.reader(csvfile, delimiter=',')
     next(csvreader, None)
     for row in csvreader:
@@ -40,6 +40,7 @@ elif candidate_3_counter > candidate_1_counter and candidate_2_counter:
     winner = candidate_3
 
 #print the results
+
 print('---------------------')
 print('Election Results')
 print('---------------------')
@@ -51,3 +52,5 @@ print(f"{candidate_3}: {candidate_3_percent}% ({candidate_3_counter})")
 print('---------------------')
 print(f"Winner: {winner}")
 print('---------------------')
+
+
