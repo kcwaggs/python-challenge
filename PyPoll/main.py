@@ -27,9 +27,9 @@ with open(pypoll_csv) as csvfile:
             candidate_3_counter += 1
 
 # percent of votes per candidate
-candidate_1_percent = ((candidate_1_counter / total_counter)*100)
-candidate_2_percent = ((candidate_2_counter / total_counter)*100)
-candidate_3_percent = ((candidate_3_counter / total_counter)*100)
+candidate_1_percent = ((candidate_1_counter / total_counter)*100).__round__(3)
+candidate_2_percent = ((candidate_2_counter / total_counter)*100).__round__(3)
+candidate_3_percent = ((candidate_3_counter / total_counter)*100).__round__(3)
 
 # determine the winner 
 if candidate_1_counter > candidate_2_counter and candidate_3_counter:
