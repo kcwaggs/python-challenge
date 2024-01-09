@@ -1,6 +1,10 @@
 # import CSV 
 import os
 
+f = open("analysis/analysis.txt",'w')
+f.write('')
+f.close()
+
 # variables
 t = 0
 total_counter = 0
@@ -56,6 +60,16 @@ def results():
 results()
 
 
-f = open("analysis/analysis.txt",'w')
-f.write(str(results))
-f.close()
+with open("analysis/analysis.txt",'w') as f:
+    print('---------------------',file = f)
+    print('Election Results',file = f)
+    print('---------------------',file = f)
+    print(f"Total Votes: {total_counter}",file = f)
+    print('---------------------',file = f)
+    print(f"{candidate_1}: {candidate_1_percent}% ({candidate_1_counter})",file = f)
+    print(f"{candidate_2}: {candidate_2_percent}% ({candidate_2_counter})",file = f)
+    print(f"{candidate_3}: {candidate_3_percent}% ({candidate_3_counter})",file = f)
+    print('---------------------',file = f)
+    print(f"Winner: {winner}",file = f)
+    print('---------------------',file = f)
+    f.close()
