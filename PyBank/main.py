@@ -2,7 +2,7 @@ import os
 import csv
 
 # Path to collect data from the csv file in the Resources folder
-pybank_csv = os.path.join("PyBank","resources", "budget_data.csv")
+pybank_csv = os.path.join("resources", "budget_data.csv")
 
 # total months
 m = 0
@@ -19,8 +19,29 @@ with open(pybank_csv, 'r') as csv2:
    t = sum(int(row[1]) for row in csvreader2)
 
 #print the results
-print(f"Total Months: {m}")
-print(f"Total: ${t}")
-print(f"Average Change: ${t}")
-print(f"Greatest Increase in Profits: ${t}")
-print(f"Greatest Decrease in Profits: ${t}")
+def results():
+   print('---------------------------------------')
+   print('Financial Analysis')
+   print('---------------------------------------')
+   print(f"Total Months: {m}")
+   print(f"Total: ${t}")
+   print(f"Average Change: ${t}")
+   print('---------------------------------------')
+   print(f"Greatest Increase in Profits: ${t}")
+   print(f"Greatest Decrease in Profits: ${t}")
+   print('---------------------------------------')
+   return
+results()
+
+with open("analysis/analysis.txt",'w') as f:
+   print('---------------------------------------',file = f)
+   print('Financial Analysis',file = f)
+   print('---------------------------------------',file = f)
+   print(f"Total Months: {m}",file = f)
+   print(f"Total: ${t}",file = f)
+   print(f"Average Change: ${t}",file = f)
+   print('---------------------------------------',file = f)
+   print(f"Greatest Increase in Profits: ${t}",file = f)
+   print(f"Greatest Decrease in Profits: ${t}",file = f)
+   print('---------------------------------------',file = f)
+   f.close()
