@@ -12,7 +12,7 @@ candidate_3 = "Raymon Anthony Doane"
 candidate_3_counter = 0
 
 # pathing and read CSV file
-pypoll_csv = os.path.join('PyPoll','resources','election_data.csv')
+pypoll_csv = os.path.join('resources','election_data.csv')
 with open(pypoll_csv) as csvfile:
     import csv
     csvreader = csv.reader(csvfile, delimiter=',')
@@ -40,17 +40,22 @@ elif candidate_3_counter > candidate_1_counter and candidate_2_counter:
     winner = candidate_3
 
 #print the results
+def results():
+    print('---------------------')
+    print('Election Results')
+    print('---------------------')
+    print(f"Total Votes: {total_counter}")
+    print('---------------------')
+    print(f"{candidate_1}: {candidate_1_percent}% ({candidate_1_counter})")
+    print(f"{candidate_2}: {candidate_2_percent}% ({candidate_2_counter})")
+    print(f"{candidate_3}: {candidate_3_percent}% ({candidate_3_counter})")
+    print('---------------------')
+    print(f"Winner: {winner}")
+    print('---------------------')
+    return()
+results()
 
-print('---------------------')
-print('Election Results')
-print('---------------------')
-print(f"Total Votes: {total_counter}")
-print('---------------------')
-print(f"{candidate_1}: {candidate_1_percent}% ({candidate_1_counter})")
-print(f"{candidate_2}: {candidate_2_percent}% ({candidate_2_counter})")
-print(f"{candidate_3}: {candidate_3_percent}% ({candidate_3_counter})")
-print('---------------------')
-print(f"Winner: {winner}")
-print('---------------------')
 
-
+f = open("analysis/analysis.txt",'w')
+f.write(str(results))
+f.close()
