@@ -20,7 +20,7 @@ pypoll_csv = os.path.join('resources','election_data.csv')
 with open(pypoll_csv) as csvfile:
     import csv
     csvreader = csv.reader(csvfile, delimiter=',')
-    next(csvreader, None)
+    next(csvfile)
     for row in csvreader:
         total_counter += 1
         if row[2] == candidate_1:
@@ -44,32 +44,19 @@ elif candidate_3_counter > candidate_1_counter and candidate_2_counter:
     winner = candidate_3
 
 #print the results
-def results():
-    print('---------------------')
-    print('Election Results')
-    print('---------------------')
-    print(f"Total Votes: {total_counter}")
-    print('---------------------')
-    print(f"{candidate_1}: {candidate_1_percent}% ({candidate_1_counter})")
-    print(f"{candidate_2}: {candidate_2_percent}% ({candidate_2_counter})")
-    print(f"{candidate_3}: {candidate_3_percent}% ({candidate_3_counter})")
-    print('---------------------')
-    print(f"Winner: {winner}")
-    print('---------------------')
-    return()
-results()
-
-
-with open("analysis/analysis.txt",'w') as f:
-    print('---------------------',file = f)
-    print('Election Results',file = f)
-    print('---------------------',file = f)
-    print(f"Total Votes: {total_counter}",file = f)
-    print('---------------------',file = f)
-    print(f"{candidate_1}: {candidate_1_percent}% ({candidate_1_counter})",file = f)
-    print(f"{candidate_2}: {candidate_2_percent}% ({candidate_2_counter})",file = f)
-    print(f"{candidate_3}: {candidate_3_percent}% ({candidate_3_counter})",file = f)
-    print('---------------------',file = f)
-    print(f"Winner: {winner}",file = f)
-    print('---------------------',file = f)
-    f.close()
+results = (
+    f"---------------------------------------\n"
+    f"Elections Results\n"
+    f"---------------------------------------\n"
+    f"Total Votes: {total_counter:,.0f}\n"
+    f"---------------------------------------\n"
+    f"{candidate_1}: {candidate_1_percent:,.2f}% ({candidate_1_counter:,.0f})\n"
+    f"{candidate_2}: {candidate_2_percent:,.2f}% ({candidate_2_counter:,.0f})\n"
+    f"{candidate_3}: {candidate_3_percent:,.2f}% ({candidate_3_counter:,.0f})\n"
+    f"---------------------------------------\n"
+    f"Winner: {winner}\n"
+    f"---------------------------------------\n"
+)
+print(results)
+with open("analysis/analysis.txt",'w') as txtfile:
+    txtfile.write(results)
