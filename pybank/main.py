@@ -1,8 +1,8 @@
-# Dependencies
+# Dependencies of analysis:
 import os
 import csv
 
-# Variables
+# Variables to use:
 total_months = 0
 total_profit_loss = 0
 maximum_profit = 0
@@ -12,9 +12,10 @@ min_profit_date = []
 max_profit_date = []
 
 # Path to collect data from the csv file in the Resources folder
+# you need to be in the PyBank folder to collect the correct results for this path. 
 csv_path = os.path.join("resources", "budget_data.csv")
 
-# Run through the CSV file
+# Run through the CSV file - collect information from first row:
 with open(csv_path, 'r') as csvfile:
    csvreader = csv.reader(csvfile, delimiter=',')
    next(csvfile)
@@ -23,6 +24,7 @@ with open(csv_path, 'r') as csvfile:
    total_profit_loss += int(float(next_row[1]))
    previous = int(float(next_row[1]))
 
+   # For loop to get the profit total, change, and months:
    for row in csvreader:
       total_months = total_months + 1
       total_profit_loss += int(float(row[1]))
@@ -30,6 +32,7 @@ with open(csv_path, 'r') as csvfile:
       change.append(change_profit_loss)
       previous = int(row[1])
 
+      # if statement to determine the maximum and minimum profit changes:
       if change_profit_loss > maximum_profit:
          maximum_profit = change_profit_loss
          max_profit_date = row[0]
@@ -37,10 +40,10 @@ with open(csv_path, 'r') as csvfile:
          minimum_profit = change_profit_loss
          min_profit_date = row[0]
 
+# calculate the average:
 average = sum(change) / len(change)
-average = average.__round__(2)
-total_profit_loss = total_profit_loss
 
+# identify the results - format them as necessary:
 results = (
    f"---------------------------------------\n"
    f"Financial Analysis\n"
@@ -54,6 +57,7 @@ results = (
    f"---------------------------------------\n"
 )
 
+# ptint the results and add to text file - this will create a file if none exists:
 print(results)
 with open("analysis/analysis.txt",'w') as txtfile:
    txtfile.write(results)
